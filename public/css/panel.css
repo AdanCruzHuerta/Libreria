@@ -1,0 +1,14 @@
+#navegacion{
+	margin-top: 50px;
+}
+#navegacion a{
+	color: black;
+	font-size: 12px;
+}
+.item{
+	color: #272727 !important;
+}
+.item:hover{
+	color: #00838F !important;
+	cursor: pointer !important;
+}

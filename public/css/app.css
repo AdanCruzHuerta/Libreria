@@ -1,0 +1,77 @@
+body{
+	font-family: 'Abel',sans-serif;
+}
+.button-collapse, .brand-logo{
+	margin-left: 20px;
+}
+/*
+	Selectores CSS3
+	clases     "."
+	id         "#"
+	etiquetas  "tag"
+*/
+#slider-libreria, #section2{
+	margin-top: 30px;
+}
+#section2{
+	background:#F2F2F2;
+	padding: 10px;
+}
+.slider .indicators .indicator-item.active{
+	background-color: #00838F !important;
+}
+.active-item{
+	background: #007681;
+}
+.icon-section2{
+	color: #616161;
+	font-size: 80px;
+}
+.title-icon-section2{
+	font-size: 20px;
+	font-weight: bold;
+	color: #616161;
+}
+.p-section2{
+	text-align: justify;
+	font-size: 14px;
+	font-style: italic;
+}
+.btn-social{
+	font-size: 35px;
+	margin-left: 10px;
+	color: #ffffff;
+}
+#nuevos{
+	margin-top: 20px;
+	margin-bottom: 50px;
+}
+.book{
+	height: 160px !important;
+}
+.payment i{
+	font-size: 45px;
+	color: #006064;
+	margin-right: 10px;
+}
+.acerca, .contacto{
+	color: #0097a7;
+}
+.acerca a{
+	color: #757575;
+}
+.notificacion{
+	width: 100%;
+	height: 40px;
+	background: #4caf50;
+	color: #FFFFFF;
+	font-weight: bold;
+}
+.form-acceso{
+	margin-top: 40px;
+	height:300px;
+}
+.error{
+	color: red;
+	padding: 3px;
+}
