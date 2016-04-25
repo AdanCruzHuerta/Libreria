@@ -15,11 +15,12 @@ class AdministradorMiddleware
      */
     public function handle($request, Closure $next)
     {
-        // pregunta si la sesion existe
-        if (!session()->has('administrador')) {
+        if(\Auth::check()){
+            if(\Auth::user()->tipo == 1){
+                 return $next($request);
+            }
             return redirect('/acceder');
         }
-        
-        return $next($request);
+        return redirect('/acceder');
     }
 }

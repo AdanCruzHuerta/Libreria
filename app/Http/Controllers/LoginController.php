@@ -34,27 +34,15 @@ class LoginController extends Controller
             $usuario = Auth::user();
             // verifica que sea administrador
             if (Auth::user()->tipo == 1 ) {
-                //$request->session()->put('administrador', $usuario);
                 return redirect('/administrador');
             } 
             return "Cliente";
         }
         return back();
     }
-    public function show($id)
+    public function destroy()
     {
-        //
-    }
-    public function edit($id)
-    {
-        //
-    }
-    public function update(Request $request, $id)
-    {
-        //
-    }
-    public function destroy($id)
-    {
-        //
+        \Auth::logout();
+        return redirect('/');
     }
 }

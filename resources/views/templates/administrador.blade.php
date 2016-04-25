@@ -1,3 +1,4 @@
+<?php session_start() ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +22,7 @@
 			    	</a>
 			    	<!--resoluciones PC-->
 			      	<ul id="nav-mobile" class="right hide-on-med-and-down">
-			      		<li><a href="#!">{{ session()->get('administrador')->nombre }}</a></li>
+			      		<li><a href="#!">{{ \Auth::user()->nombre }}</a></li>
 			        	<li><a href="/logout" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Salir"><i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
 			      	</ul>
 					<!--Resoluciones Tabletas y Telefonos-->
@@ -33,7 +34,7 @@
 		</nav>
 	</header>
 	<div class="container">
-			@yield('navegacion')
+		@yield('navegacion')
 		@yield('content')
 	</div>
 	<script src="/js/jquery.min.js"></script>

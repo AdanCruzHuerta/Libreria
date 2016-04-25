@@ -23,5 +23,6 @@ get('/administrador/panel', 'AdministradorController@index');
 // rutas del administrador
 Route::group(['middleware' => 'admin'], function () {
 	get('/administrador', 'AdministradorController@index');
-	get('/logout', 'AdministradorController@logout');
+	get('/logout', 'LoginController@destroy');
+	Route::resource('/administrador/libros', 'LibrosController');
 });

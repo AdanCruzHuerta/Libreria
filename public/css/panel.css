@@ -12,3 +12,26 @@
 	color: #00838F !important;
 	cursor: pointer !important;
 }
+#navegacion{
+	margin-top: 50px;
+}
+#navegacion a{
+	color: black;
+	font-size: 12px;
+}
+.space{
+	margin-right: 10px;
+	margin-left: 10px;
+}
+.nav-active{
+	background: #e0e0e0;
+	padding: 10px;
+	color: black;
+	border-radius: 5px;
+}
+.nav-active:hover{
+	color: black !important;
+}
+#navegacion a:hover{
+	color: #00838F;
+}
