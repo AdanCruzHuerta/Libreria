@@ -15,6 +15,11 @@
 				</div> -->
 				<p style="color: green;">Mensaje guardado</p>
 			@endif
+			<ul>
+				@foreach ($errors->all() as $error)
+				 <li>{{ $error }}</li>   
+				@endforeach
+			</ul>
 			<form action="/mensajes" method="POST">
 				{{ csrf_field() }}
 				<div class="col s12 l6">

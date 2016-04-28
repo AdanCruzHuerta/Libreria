@@ -38,7 +38,9 @@
 		@yield('content')
 	</div>
 	<script src="/js/jquery.min.js"></script>
+	<script src="http://cdn.jsdelivr.net/vue/1.0.21/vue.min.js"></script>
 	<script src="/js/materialize.min.js"></script>
 	<script src="/js/app.js"></script>
+	@yield('scripts')
 </body>
 </html>
