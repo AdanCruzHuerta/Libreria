@@ -12,7 +12,6 @@
 	<div class="row">
 		<div class="col s12">
 			<h5><b>Registrar libro</b></h5> 
-			<label>@{{titulo}}</label>
 		</div>
 	</div>
 @stop
@@ -73,42 +72,53 @@
 					</div>
 		    	</div>
 			</div>
-			<div class="col s12 l3">
-				<div class="card-panel">
-					<center>
-				        <h5>Idiomas</h5>
-				        <label>Lista de idiomas</label>
-				        <hr>
-				        <h5>Editorial</h5>
-				        <label>Lista de editoriales</label>
-				        <hr>
-				        <h5>Autores</h5>
-				        <label>Lista de autores</label>
-			        </center>
-		    	</div>
-			</div>
 		</form>
+			<div class="col s12 l3">
+				<div class="card-panel" v-if="cardIdioma">
+			    	<center>
+			    		<label>ESCRIBE EL IDIOMA</label> <br>
+			    		<label>Da enter para guardar</label>
+			    	</center>
+			    	<div class="row">
+				        <div class="input-field col s12">
+				          	<input type="text" class="validate" v-model="newIdioma" v-on:keyup.enter="storeIdioma">
+				        </div>
+				    </div>
+		        </div>
+				<ul class="collapsible" data-collapsible="accordion">
+					<li>
+				      	<div class="collapsible-header active"><i class="fa fa-language" aria-hidden="true"></i>
+				      		<b class="left">IDIOMAS</b>
+				      	</div>
+				      	<div class="collapsible-body">
+				      		<p class="agregaIdioma">
+				      			<center>
+						      		<a href="#!" class="agregaIdioma" v-on:click="agregarIdioma">Agregar idioma</a>
+						      	</center>
+				      		</p>
+				      		<p class="itemsIdioma" v-for="idioma in idiomas">
+			      				<input class="with-gap" type="radio" id="test@{{$index}}" name="idioma" />
+					      		<label for="test@{{$index}}">@{{idioma.nombre}}</label>
+					      		<button v-on:click="removeIdioma(idioma)" class="remover-idioma">&#10007;</button>
+						    </p>
+				      	</div>
+				    </li>
+				    <li>
+				      	<div class="collapsible-header"><i class="fa fa-users" aria-hidden="true"></i><b>AUTORES</b></div>
+				      	<div class="collapsible-body">
+				      		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+				      	</div>
+				    </li>
+				     <li>
+				      	<div class="collapsible-header"><i class="fa fa-book" aria-hidden="true"></i><b>EDITORIALES</b></div>
+				      	<div class="collapsible-body">
+				      		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+				      	</div>
+				    </li>
+				</ul>
+			</div>
 	</div>
 @stop
-
 @section('scripts')
-	<script>
-		// JQUERY
-		/*$(function(){
-			// codigo
-		});*/
-
-		// VUE JS
-		new Vue({
-			// Atributos
-			el: 'body', // ambiente de trabajo de Vue
-			data: {
-				titulo: ""
-			},
-			// Metodos
-			ready: function() {
-				alert("Hola mundo");
-			}
-		});
-	</script>
+	<script src="/js/admin.js"></script>
 @stop

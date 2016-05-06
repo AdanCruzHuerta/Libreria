@@ -4,6 +4,8 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Bookstore</title>
+	<meta id="token"  name="token" value="{{ csrf_token() }}">
+	<link rel="icon" href="/img/favicon.ico" type="image/x-icon"/>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 	<link href='//fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="/css/materialize.min.css"/>
@@ -39,6 +41,7 @@
 	</div>
 	<script src="/js/jquery.min.js"></script>
 	<script src="http://cdn.jsdelivr.net/vue/1.0.21/vue.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/0.7.0/vue-resource.min.js"></script>
 	<script src="/js/materialize.min.js"></script>
 	<script src="/js/app.js"></script>
 	@yield('scripts')

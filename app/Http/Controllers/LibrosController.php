@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Idioma;
 
 class LibrosController extends Controller
 {
@@ -42,4 +43,24 @@ class LibrosController extends Controller
     {
         //
     }
+    public function idiomas()
+    {
+        return Idioma::all();
+    }
+    public function storeIdioma(Request $request)
+    {
+        $this->validate($request, [
+            'nombre' => 'required|min:3'
+        ]);
+        return Idioma::create($request->all());
+    }
+    public function deleteIdioma(Request $request)
+    {   
+        $delete = \DB::table('Idioma')
+            ->where('id_Idioma', $request->id_Idioma)
+            ->delete();
+        if($delete){
+            return $delete;
+        }
+    }   
 }

@@ -3,6 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Bookstore</title>
+	<link rel="icon" href="/img/favicon.ico" type="image/x-icon"/>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 	<link href='//fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="/css/materialize.min.css"/>

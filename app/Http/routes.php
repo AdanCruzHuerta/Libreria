@@ -26,6 +26,9 @@ Route::group(['middleware' => 'admin'], function () {
 	get('/administrador', 'AdministradorController@index');
 	get('/logout', 'LoginController@destroy');
 	Route::resource('/administrador/libros', 'LibrosController');
+	get('/administrador/libros/create/idiomas', 'LibrosController@idiomas');
+	post('/administrador/libros/create/storeIdioma', 'LibrosController@storeIdioma');
+	post('/administrador/libros/create/deleteIdioma', 'LibrosController@deleteIdioma');
 });
 
 // Consultas multiples
@@ -33,7 +36,6 @@ Route::group(['middleware' => 'admin'], function () {
 // Autor
 // Libro_Autor
 get('/consulta', function(){
-
 	try{
 		\DB::beginTransaction();
 	// Eloquent

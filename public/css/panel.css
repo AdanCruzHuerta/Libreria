@@ -35,3 +35,18 @@
 #navegacion a:hover{
 	color: #00838F;
 }
+.agregaIdioma{
+	margin-top: -40px !important;
+}
+.itemsIdioma{
+	margin-top: -70px !important;
+	margin-bottom: 10px !important;
+}
+.remover-idioma{
+	font-weight: bold;
+	background: none;
+	border: 0;
+	color: red;
+	padding: 0;
+	float: right;
+}
