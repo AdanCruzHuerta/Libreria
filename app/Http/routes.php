@@ -20,15 +20,20 @@ post('/mensajes', 'MensajesController@store');
 post('/login', 'LoginController@store');
 get('/administrador/panel', 'AdministradorController@index');
 
-
 // rutas del administrador
 Route::group(['middleware' => 'admin'], function () {
 	get('/administrador', 'AdministradorController@index');
 	get('/logout', 'LoginController@destroy');
 	Route::resource('/administrador/libros', 'LibrosController');
-	get('/administrador/libros/create/idiomas', 'LibrosController@idiomas');
-	post('/administrador/libros/create/storeIdioma', 'LibrosController@storeIdioma');
-	post('/administrador/libros/create/deleteIdioma', 'LibrosController@deleteIdioma');
+		get('/administrador/libros/create/idiomas', 'LibrosController@idiomas');
+		post('/administrador/libros/create/storeIdioma', 'LibrosController@storeIdioma');
+		post('/administrador/libros/create/deleteIdioma', 'LibrosController@deleteIdioma');
+		get('/administrador/libros/create/autores', 'LibrosController@autores');
+		post('/administrador/libros/create/storeAutor', 'LibrosController@storeAutor');
+		post('/administrador/libros/create/deleteAutor', 'LibrosController@deleteAutor');
+		get('/administrador/libros/create/editoriales', 'LibrosController@editoriales');
+		post('/administrador/libros/create/storeEditorial', 'LibrosController@storeEditorial');
+		post('/administrador/libros/create/deleteEditorial', 'LibrosController@deleteEditorial');
 });
 
 // Consultas multiples
@@ -67,4 +72,17 @@ get('/consulta', function(){
 			\DB::rollback();
 			return "Fail";
 	}
+});
+
+get('/correo', function(){
+	$data = ["usuario" => "ADAN CRUZ HUERTA"];
+	\Mail::send('emails.message', $data, function($message)
+       {
+           //remitente
+           $message->from('adancruzhuerta@gmail.com');
+           //asunto
+           $message->subject("Enviando correo");
+           //receptor
+           $message->to("12460289@itcolima.edu.mx");
+       });
 });

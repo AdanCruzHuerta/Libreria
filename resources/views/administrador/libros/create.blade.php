@@ -12,6 +12,9 @@
 	<div class="row">
 		<div class="col s12">
 			<h5><b>Registrar libro</b></h5> 
+			@if(Session::has('success'))
+			<h5>Exito</h5>
+			@endif
 		</div>
 	</div>
 @stop
@@ -65,8 +68,9 @@
 					</div>
 					<div class="row">
 						<div class="col s12">
-							<input type="hidden" name="editorial_id_editorial" value="1">
-							<input type="hidden" name="Idioma_id_Idioma" value="1">
+							<input type="hidden" name="editorial_id_editorial" value="@{{id_editorial}}">
+							<input type="hidden" name="Idioma_id_Idioma" value="@{{id_idioma}}">
+							<input type="hidden" name="id_Autores" value="@{{id_Autores}}">
 							<button type="submit" class="waves-effect waves-light btn right">Registrar</button>
 						</div>
 					</div>
@@ -74,17 +78,7 @@
 			</div>
 		</form>
 			<div class="col s12 l3">
-				<div class="card-panel" v-if="cardIdioma">
-			    	<center>
-			    		<label>ESCRIBE EL IDIOMA</label> <br>
-			    		<label>Da enter para guardar</label>
-			    	</center>
-			    	<div class="row">
-				        <div class="input-field col s12">
-				          	<input type="text" class="validate" v-model="newIdioma" v-on:keyup.enter="storeIdioma">
-				        </div>
-				    </div>
-		        </div>
+				@include('administrador.libros.cards')
 				<ul class="collapsible" data-collapsible="accordion">
 					<li>
 				      	<div class="collapsible-header active"><i class="fa fa-language" aria-hidden="true"></i>
@@ -97,8 +91,13 @@
 						      	</center>
 				      		</p>
 				      		<p class="itemsIdioma" v-for="idioma in idiomas">
-			      				<input class="with-gap" type="radio" id="test@{{$index}}" name="idioma" />
-					      		<label for="test@{{$index}}">@{{idioma.nombre}}</label>
+			      				<input class="with-gap" 
+			      					   type="radio" 
+			      					   id="idioma@{{$index}}"
+			      					   value="@{{idioma.id_Idioma}}" 
+			      					   v-model="id_idioma" />
+
+					      		<label for="idioma@{{$index}}">@{{idioma.nombre}}</label>
 					      		<button v-on:click="removeIdioma(idioma)" class="remover-idioma">&#10007;</button>
 						    </p>
 				      	</div>
@@ -106,13 +105,39 @@
 				    <li>
 				      	<div class="collapsible-header"><i class="fa fa-users" aria-hidden="true"></i><b>AUTORES</b></div>
 				      	<div class="collapsible-body">
-				      		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+				      		<p class="agregaIdioma">
+				      			<center>
+						      		<a href="#!" class="agregaIdioma" v-on:click="agregarAutor">Agregar autor</a>
+						      	</center>
+				      		</p>
+				      		<p class="itemsIdioma" v-for="autor in autores">
+				      			<input type="checkbox" 
+				      				   id="autor@{{$index}}" 
+				      				   v-on:click="autorLibro(autor.idAutor, $index)"
+				      				   />
+					      		<label for="autor@{{$index}}">@{{autor.Nombre}}</label>
+					      		<button v-on:click="removeAutor(autor)" class="remover-idioma">&#10007;</button>
+				      		</p>
 				      	</div>
 				    </li>
 				     <li>
 				      	<div class="collapsible-header"><i class="fa fa-book" aria-hidden="true"></i><b>EDITORIALES</b></div>
 				      	<div class="collapsible-body">
-				      		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+				      		<p class="agregaIdioma">
+				      			<center>
+						      		<a href="#!" class="agregaIdioma" v-on:click="agregarEditorial">Agregar editorial</a>
+						      	</center>
+				      		</p>
+				      		<p class="itemsIdioma" v-for="editorial in editoriales">
+			      				<input class="with-gap" 
+			      					   type="radio" 
+			      					   id="editorial@{{$index}}"
+			      					   value="@{{editorial.id_editorial}}"
+			      					   v-model="id_editorial" 
+			      					   />
+					      		<label for="editorial@{{$index}}">@{{editorial.nombre}}</label>
+					      		<button v-on:click="removeEditorial(editorial)" class="remover-idioma">&#10007;</button>
+						    </p>
 				      	</div>
 				    </li>
 				</ul>
