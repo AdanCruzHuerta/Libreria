@@ -3,9 +3,7 @@
 get('/', function () {
     return view('website.index');
 });
-get('/tienda', function(){
-	return view('website.tienda');
-});
+get('/tienda', 'LibrosController@show');
 get('/carrito', function(){
 	return view('website.carrito');
 });
@@ -72,17 +70,4 @@ get('/consulta', function(){
 			\DB::rollback();
 			return "Fail";
 	}
-});
-
-get('/correo', function(){
-	$data = ["usuario" => "ADAN CRUZ HUERTA"];
-	\Mail::send('emails.message', $data, function($message)
-       {
-           //remitente
-           $message->from('adancruzhuerta@gmail.com');
-           //asunto
-           $message->subject("Enviando correo");
-           //receptor
-           $message->to("12460289@itcolima.edu.mx");
-       });
 });

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\{Idioma, Autor, Editorial};
+use App\{Idioma, Autor, Editorial, Libro};
 use App\Helpers\Filesystem;
 use App\Repositories\{RepositoryLibro, RepositoryAutorLibro};
 
@@ -38,16 +38,24 @@ class LibrosController extends Controller
             $insert = RepositoryLibro::store($request, $filesystem);
             if(is_object($insert)){
                 $autores_libros = RepositoryAutorLibro::InsertAutoresLibros($id_autor, $insert);
-                return back()->with('success', true);
+                if($autores_libros){
+                    return back()->with('success', true);    
+                }
+                return back()->with('error', true);
             }
             return back()->with('error', true);
         }
         // si no existe el archivo lo ignoramos
         return back()->with('error-file', true);
     }
-    public function show($id)
+    public function show()
     {
-        //
+        $libros = \DB::table('Libro')
+            ->join('Idioma', 'Libro.Idioma_id_Idioma', '=','Idioma.id_Idioma')
+            ->select('Libro.id_libro','Libro.titulo','Libro.precio', 'Libro.Imagen', 'Idioma.nombre as idioma')
+            //->get();
+            ->paginate(1);
+        return view('website.tienda', compact('libros'));
     }
     public function edit($id)
     {
