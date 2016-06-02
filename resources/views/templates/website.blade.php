@@ -78,7 +78,10 @@
       	</div>
     </footer>
 	<script src="/js/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/vue/1.0.24/vue.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/0.7.2/vue-resource.min.js"></script>
 	<script src="/js/materialize.min.js"></script>
 	<script src="/js/app.js"></script>
+	@yield('scripts')
 </body>
 </html>

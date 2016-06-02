@@ -50,16 +50,13 @@ class LibrosController extends Controller
     }
     public function show()
     {
-        $libros = \DB::table('Libro')
-            ->join('Idioma', 'Libro.Idioma_id_Idioma', '=','Idioma.id_Idioma')
-            ->select('Libro.id_libro','Libro.titulo','Libro.precio', 'Libro.Imagen', 'Idioma.nombre as idioma')
-            //->get();
-            ->paginate(1);
+        $libros = RepositoryLibro::all();
         return view('website.tienda', compact('libros'));
     }
-    public function edit($id)
+    public function detalle(Request $request)
     {
-        //
+        $libro = RepositoryLibro::detalle($request);
+        return $libro;
     }
     public function update(Request $request, $id)
     {

@@ -18,6 +18,8 @@ post('/mensajes', 'MensajesController@store');
 post('/login', 'LoginController@store');
 get('/administrador/panel', 'AdministradorController@index');
 
+get('/detalle-libro', 'LibrosController@detalle');
+
 // rutas del administrador
 Route::group(['middleware' => 'admin'], function () {
 	get('/administrador', 'AdministradorController@index');

@@ -1,6 +1,6 @@
 @extends('templates.website')
 @section('content')
-	<div class="container">
+	<div id="app" class="container">
 		<div class="row">
 			<div class="col s12">
 				<h2>Lista de libros</h2>
@@ -33,7 +33,8 @@
 							</td>
 							<td>{{$libro->idioma}}</td>
 							<td>
-								<a href="#!">Ver detalles</a>
+								<a href="#!" 
+								   v-on:click="mostrar({{$libro->id_libro}})">Ver detalles</a>
 							</td>
 						</tr>
 						@endforeach
@@ -46,3 +47,20 @@
 		</div>
 	</div>
 @stop
+@section('scripts')
+		<script>
+			new Vue({
+				el: '#app',
+				data:{
+
+				},
+				methods: {
+					mostrar: function(id_libro){
+						this.$http.get('/detalle-libro', {id_libro:id_libro}).then(function(response){
+							console.log(response)
+						});
+					}
+				}
+			})
+		</script>
+	@stop
