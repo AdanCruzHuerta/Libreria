@@ -19,6 +19,8 @@ post('/login', 'LoginController@store');
 get('/administrador/panel', 'AdministradorController@index');
 
 get('/detalle-libro', 'LibrosController@detalle');
+get('/agregar-libro/{id}', 'CarritoController@store');
+get('/remover-item/{id}', 'CarritoController@destroy');
 
 // rutas del administrador
 Route::group(['middleware' => 'admin'], function () {

@@ -22,7 +22,7 @@
 		    	<!--resoluciones PC-->
 		      	<ul id="nav-mobile" class="right hide-on-med-and-down">
 		      		<li class=@if($route == 'tienda') {{ 'active-item' }} @endif ><a href="/tienda">Tienda <i class="fa fa-shopping-bag"></i></a></li>
-		      		<li class=@if($route == 'carrito') {{ 'active-item' }} @endif><a href="/carrito">Carrito <i class="fa fa-shopping-cart"></i></a></li>
+		      		<li class=@if($route == 'carrito') {{ 'active-item' }} @endif><a href="/carrito">{{Cart::getContent()->count()}} Carrito <i class="fa fa-shopping-cart"></i></a></li>
 		        	<li class=@if($route == 'acerca') {{ 'active-item' }} @endif><a href="/acerca">Acerca <i class="fa fa-info-circle"></i></a></li>
 		        	<li class=@if($route == 'contacto') {{ 'active-item' }} @endif><a href="/contacto">Contacto <i class="fa fa-phone-square"></i></a></li>
 		        	<li class=@if($route == 'acceder') {{ 'active-item' }} @endif><a href="/acceder">Acceder <i class="fa fa-user"></i></a></li>

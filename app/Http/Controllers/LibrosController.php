@@ -56,7 +56,8 @@ class LibrosController extends Controller
     public function detalle(Request $request)
     {
         $libro = RepositoryLibro::detalle($request);
-        return $libro;
+        $autores = RepositoryLibro::getAutores($request);
+        return compact('libro','autores');
     }
     public function update(Request $request, $id)
     {

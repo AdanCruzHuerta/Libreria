@@ -32,15 +32,22 @@ class RepositoryLibro
 	}
 	static function detalle($request)
 	{
-		// get -> coleccion de datos muchos datos
-		// first
 		$libro = \DB::table('Libro')
 			->join('editorial', 'Libro.editorial_id_editorial', '=', 'editorial.id_editorial')
 			->join('Idioma', 'Libro.Idioma_id_Idioma', '=', 'Idioma.id_idioma')
 			->where('Libro.id_libro', '=', $request->id_libro)
 			->select('Libro.titulo', 'Libro.edicion', 'Libro.paginas', 'Libro.precio', 'Libro.isbn', 'editorial.nombre as editorial', 'Idioma.nombre as idioma')
 			->first();
-		dd($libro);
 		return $libro;
+	}
+	static function getAutores($request)
+	{	
+		$autores = \DB::table('Autor')
+			->join('Autor_has_Libro as a_l', 'Autor.idAutor', '=', 'a_l.Autor_idAutor')
+			->where('a_l.Libro_id_libro', '=', $request->id_libro)
+			->select('Autor.nombre')
+			->get();
+		dd($autores);
+		return $autores;
 	}
 }
