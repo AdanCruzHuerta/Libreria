@@ -8,6 +8,8 @@
 	<link href='//fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="/css/materialize.min.css"/>
 	<link rel="stylesheet" href="/css/app.css"/>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script type="text/javascript" src="https://conektaapi.s3.amazonaws.com/v0.3.2/js/conekta.js"></script>
 </head>
 <body>
 	<header>

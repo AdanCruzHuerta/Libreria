@@ -27,7 +27,10 @@
       					</div>
     				</div>
 				@else
-					<?php $items = Cart::getContent(); $contador = 0; ?>
+					<?php 
+						$items = Cart::getContent(); $contador = 0; 
+						$total = Cart::getTotal();
+					?>
 					<table>
 						<thead>
 							<tr>
@@ -54,6 +57,29 @@
 							@endforeach
 						</tbody>
 					</table>
+					<br>
+					<div class="row">
+						<div class="col s12 m4 l4 offset-m8 offset-l8">
+							<table>
+								<thead>
+									<tr>
+										<th>
+											TOTAL A PAGAR:
+										</th>
+										<td>
+											$ {{  (number_format($total, 2, '.', ',')) }}
+										</td>
+									</tr>
+								</thead>
+							</table>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col s12">
+							<a href="/pagar/{{$total}}" class="waves-effect waves-light btn right">Realizar pago</a>
+						</div>
+					</div>
+
 				@endif
 			</div>
 		</div>

@@ -13,6 +13,10 @@ get('/acerca', function(){
 get('/contacto', function(){
 	return view('website.contacto');
 });
+get('/pagar/{amount}', function($amount){
+	return view('website.pagar', compact('amount'));
+});
+post('/pagar', 'PagarController@pagar');
 get('/acceder', 'LoginController@index');
 post('/mensajes', 'MensajesController@store');
 post('/login', 'LoginController@store');
